@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  room: one
+  rate_plan: one
+  calendar: one
+  reservation_number: MyString
+  reservation_date: 2024-09-23 23:54:16
+  check_in: 2024-09-23 23:54:16
+  check_out: 2024-09-23 23:54:16
+  name: MyString
+  email: MyString
+  phone_number: MyString
+
+two:
+  room: two
+  rate_plan: two
+  calendar: two
+  reservation_number: MyString
+  reservation_date: 2024-09-23 23:54:16
+  check_in: 2024-09-23 23:54:16
+  check_out: 2024-09-23 23:54:16
+  name: MyString
+  email: MyString
+  phone_number: MyString

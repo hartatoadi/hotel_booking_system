@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  room: one
+  rate_plan: one
+  date: 2024-09-23
+  availability: 1
+  price: 9.99
+
+two:
+  room: two
+  rate_plan: two
+  date: 2024-09-23
+  availability: 1
+  price: 9.99
