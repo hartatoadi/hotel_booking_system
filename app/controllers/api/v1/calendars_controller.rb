@@ -1,11 +1,12 @@
-class CalendarsController < ApplicationController
+class Api::V1::CalendarsController < Api::V1::BaseController
+  before_action :set_calendar, only: [:show, :update, :destroy]
+
   def index
     @calendars = Calendar.all
     render json: @calendars
   end
 
   def show
-    @calendar = Calendar.find(params[:id])
     render json: @calendar
   end
 
@@ -19,7 +20,6 @@ class CalendarsController < ApplicationController
   end
 
   def update
-    @calendar = Calendar.find(params[:id])
     if @calendar.update(calendar_params)
       render json: @calendar
     else
@@ -28,12 +28,15 @@ class CalendarsController < ApplicationController
   end
 
   def destroy
-    @calendar = Calendar.find(params[:id])
     @calendar.destroy
     head :no_content
   end
 
   private
+
+  def set_calendar
+    @calendar = Calendar.find(params[:id])
+  end
 
   def calendar_params
     params.require(:calendar).permit(:room_id, :rate_plan_id, :date, :availability, :price)

@@ -1,11 +1,12 @@
-class RatePlansController < ApplicationController
+class Api::V1::RatePlansController < Api::V1::BaseController
+  before_action :set_rate_plan, only: [:show, :update, :destroy]
+
   def index
     @rate_plans = RatePlan.all
     render json: @rate_plans
   end
 
   def show
-    @rate_plan = RatePlan.find(params[:id])
     render json: @rate_plan
   end
 
@@ -19,7 +20,6 @@ class RatePlansController < ApplicationController
   end
 
   def update
-    @rate_plan = RatePlan.find(params[:id])
     if @rate_plan.update(rate_plan_params)
       render json: @rate_plan
     else
@@ -28,12 +28,16 @@ class RatePlansController < ApplicationController
   end
 
   def destroy
-    @rate_plan = RatePlan.find(params[:id])
     @rate_plan.destroy
     head :no_content
   end
 
   private
+
+  def set_rate_plan
+    @rate_plan = RatePlan.find(params[:id])
+  end
+
 
   def rate_plan_params
     params.require(:rate_plan).permit(:room_id, :name, :slug, :detail, :price)

@@ -1,11 +1,12 @@
-class RoomsController < ApplicationController
+class Api::V1::RoomsController < Api::V1::BaseController
+  before_action :set_room, only: [:show, :update, :destroy]
+
   def index
     @rooms = Room.all
     render json: @rooms
   end
 
   def show
-    @room = Room.find(params[:id])
     render json: @room
   end
 
@@ -19,7 +20,6 @@ class RoomsController < ApplicationController
   end
 
   def update
-    @room = Room.find(params[:id])
     if @room.update(room_params)
       render json: @room
     else
@@ -28,12 +28,15 @@ class RoomsController < ApplicationController
   end
 
   def destroy
-    @room = Room.find(params[:id])
     @room.destroy
     head :no_content
   end
 
   private
+
+  def set_room
+    @room = Room.find(params[:id])
+  end
 
   def room_params
     params.require(:room).permit(:name, :slug, :description, :feature, :published, :availability, :images)
