@@ -56,7 +56,7 @@ This system is an API for managing room bookings, including tables for `Room`, `
 - `email`: Guest email
 - `phone_number`: Guest phone number
 
-## API Endpoints
+## API Endpoints (/api/v1/...)
 
 ### Room
 
